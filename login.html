@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="login.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
     
 </head>
 
@@ -56,11 +54,11 @@
           <h3>Se connecter</h3>
           <form>
               <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Email *" value="mailLogin" />
+                  <input type="text" class="form-control" placeholder="Email *" name="mailLogin" />
               </div>
 
               <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Mot de Passe *" value="mdpLogin" />
+                  <input type="password" class="form-control" placeholder="Mot de Passe *" name="mdpLogin" />
               </div>
 
               <div class="form-group">
@@ -82,46 +80,46 @@
               <!--Nom & Prenom-->
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <input type="text" class="form-control" id="inputEmail4" placeholder="Nom *" value="nomRegister">
+                  <input type="text" class="form-control" id="inputEmail4" placeholder="Nom *" name="nomRegister">
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Prenom *" value="prenomRegister">
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Prenom *" name="prenomRegister">
                 </div>
               </div>
               <!--Mail & MDP-->
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email *" value="emailRegister">
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email *" name="emailRegister">
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Mot de Passe *" value="mdpRegister">
+                  <input type="password" class="form-control" id="inputPassword4" placeholder="Mot de Passe *" name="mdpRegister">
                 </div>
               </div>
               <!--Adresse-->
               <div class="form-group">
-                <input type="text" class="form-control" id="inputAddress" placeholder="Adresse *" value="adresseAdmin">
+                <input type="text" class="form-control" id="inputAddress" placeholder="Adresse *" name="adresseRegister">
               </div>
               <!--Ville & Pays-->
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <input type="text" class="form-control" id="inputCity4" placeholder="Ville *">
+                  <input type="text" class="form-control" id="inputCity4" placeholder="Ville *" name="villeRegister">
                 </div>
                 <div class="form-group col-md-6">
-                  <input type="text" class="form-control" id="inputCountry4" placeholder="Pays *" value="paysRegister">
+                  <input type="text" class="form-control" id="inputCountry4" placeholder="Pays *" name="paysRegister">
                 </div>
               </div>
               <!--ZIP & Numero-->
               <div class="form-row">
                 <div class="form-group col-md-4">
-                  <input type="text" class="form-control" id="inputZip" placeholder="Code Postal *">
+                  <input type="text" class="form-control" id="inputZip" placeholder="Code Postal *" name="postalRegister">
                 </div>
                 <div class="form-group col-md-8">
-                  <input type="text" class="form-control" id="inputCity" placeholder="Numero de telephone *" value="telRegister">
+                  <input type="text" class="form-control" id="inputCity" placeholder="Numero de telephone *" name="telRegister">
                 </div> 
               </div>
               <!--Carte vitale-->
               <div class="form-group">
-                <input type="text" class="form-control" id="inputAddress" placeholder="Numéro Carte Vitale *" value="vitaleRegister">
+                <input type="text" class="form-control" id="inputAddress" placeholder="Numéro Carte Vitale *" name="vitaleRegister">
               </div>
               <!--Check pour mot de passe -->
               <div class="form-check">
@@ -132,7 +130,7 @@
               </div>
 
               <div class="form-group">
-                <input type="submit" class="btnSubmit" value="Créer un compte" />
+                <input type="submit" class="btnSubmit" name="Créer un compte" />
               </div>
 
             </form>
