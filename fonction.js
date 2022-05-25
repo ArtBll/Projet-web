@@ -10,4 +10,6 @@ function check(){
 
 function confirm(){
     alert("Le Rendez-vous à bien été pris");
+
 }
+

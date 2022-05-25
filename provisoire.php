@@ -78,6 +78,68 @@
 </nav>
 <br><br><br>
 <body>
+    <form method="post">
+        <table>
+        <tr>
+                <td>ID consultation :</td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>idMedecin :</td>
+                <td>
+                    <select name="idMedecin">
+                        <option value="8376591">8376591</option>
+                        <option value="87632">87632</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Heure consultation :</td>
+                <td>
+                    <select name="heure">
+                        <option value="10:00:00">10:00:00</option>
+                        <option value="11:00:00">11:00:00</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Date :</td>
+                <td><input type="text" name="date" value="2022-05-24"></td>
+            </tr>
+            <tr>
+            <td>Jour consultation :</td>
+                <td>
+                    <select name="jour">
+                        <option value="Lundi">Lundi</option>
+                        <option value="Mardi">Mardi</option>
+                        <option value="Mercredi">Mercredi</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="S" value="Soumettre"></td>
+            </tr>
+        </table>
+    </form>
+    <?php
+        $connect= mysqli_connect('localhost', 'root', '', 'projetweb');
+
+        $idC= isset($_POST["id"])? $_POST["id"] : "";
+        $idM= isset($_POST["idMedecin"])? $_POST["idMedecin"] : "";
+        $heure= isset($_POST["heure"])? $_POST["heure"] : "";
+        $date= isset($_POST["date"])? $_POST["date"] : "";
+        $jour= isset($_POST["jour"])? $_POST["jour"] : "";
+
+        $sql = "INSERT INTO consultation(idConsultation, idCli, idMed, heureConsult, dateConsult, jour) VALUES('$idC', '6529865', '$idM','$heure', '$date', '$jour')";
+        //$result = $connect->query($sql);
+        if ($connect->query($sql) === TRUE) {
+            echo "Données ajoutées <br>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $connect->error;
+        }
+    ?>
+    
+
     <div class="container-fluid">
         <div class="card mb-8">
             <div class="row g-0">
