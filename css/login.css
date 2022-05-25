@@ -1,0 +1,79 @@
+.nav{
+  background-color: rgb(55, 187, 240);
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card {
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 1.5em;
+}
+
+.login-container{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.login-form-1{
+  padding: 5%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-1 h3{
+  text-align: center;
+  color: #333;
+ 
+}
+.login-form-2{
+  padding: 5%;
+  background: rgb(55, 187, 240);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+.login-form-2 h3{
+  text-align: center;
+  color: #fff;
+}
+.login-container form{
+  padding: 10%;
+}
+.btnSubmit
+{
+  width: 50%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+}
+
+
+.login-form-1 .btnSubmit{
+  font-weight: 600;
+  color: #fff;
+  background-color: rgb(55, 187, 240);
+  box-shadow: none ;
+  transition: box-shadow 0.2s ;
+}
+.login-form-1 .btnSubmit:hover{
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-2 .btnSubmit{
+  font-weight: 600;
+  color: rgb(55, 187, 240);
+  background-color: #fff;
+  box-shadow: none ;
+  transition: box-shadow 0.2s ;
+}
+.login-form-2 .btnSubmit:hover{
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 7px 23px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-1 .ForgetPwd{
+  color: rgb(55, 187, 240);
+  font-weight: 600;
+  text-decoration: none;
+}
