@@ -7,3 +7,9 @@ function check(){
 
     }
 }
+
+function confirm(){
+    alert("Le Rendez-vous à bien été pris");
+    document.getElementById("test").disabled = true;
+}
+
