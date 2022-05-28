@@ -1,46 +1,39 @@
-<?php
-
-?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Omnes Santé : se connecter</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/login.css">   
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/login.css"> 
+  <title>Document</title>
 </head>
-
 <body>
-
-<!--Container : Connexion-->
+<a href="client.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-arrow-left"></span> Menu</a>
 <div class="container login-container">
-  <div class="row">
+  <div class="row justify-content-center">
       <div class="col-md-6 login-form-1">
-          <h3>Se connecter</h3>
+          <h3>Connexion medecin</h3>
           <!--ACTION PEUT ETRE MODIFIE SELON LE NOM DES FICHIERS--> 
-          <form action="clientCon.php" method="post">
+          <form action="medecinCon.php" method="post">
+
               <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Email *" name="mailLogin" />
+                  <input type="text" class="form-control" placeholder="Nom *" name="nomMedecin" />
               </div>
 
               <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Mot de Passe *" name="mdpLogin" />
+                  <input type="text" class="form-control" placeholder="Prenom *" name="prenomMedecin" />
               </div>
+
+              <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Email *" name="emailMedecin" />
+              </div>
+
 
               <div class="form-group">
                   <input type="submit" class="btnSubmit" value="Se connecter" name="connecter" />
               </div>
-              <br><br><br>
-              <a href="admin.php" class="btn btn-danger">  
-                Admin
-              </a>
-              <br><br>
-              <a href="medecin.php" class="btn btn-success">    
-                Vous êtes medecin ?
-              </a>  
           </form>
-
-          <!--PARTIE ERREUR HEADER : SELON LES INDICATION --> 
           <?php
         if(isset($_GET['login_err']))
         {
@@ -48,10 +41,10 @@
 
           switch($err)
           {
-            case 'password'
+            case 'nomprenom'
             ?>
             <div class="alert alert-danger">
-              <strong>Erreur</strong> mot de passe incorrect
+              <strong>Erreur</strong> Nom ou prénom incorrect
             </div>
             <?php
             break;
@@ -73,79 +66,12 @@
           
         }
         ?>
-      </div>
-
-<!--Container : Création d'un compte-->
-      <div class="col-md-6 login-form-2">
-          <h3>Créer un compte</h3>
-          
-          <form class="login100-form validate form" method="POST" action="clientSignup.php">
-            <form>
-              <!--Nom & Prenom-->
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <input type="text" class="form-control" id="inputEmail4" placeholder="Nom *" name="nomRegister">
-                </div>
-                <div class="form-group col-md-6">
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Prenom *" name="prenomRegister">
-                </div>
-              </div>
-              <!--Mail & MDP-->
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email *" name="emailRegister">
-                </div>
-                <div class="form-group col-md-6">
-                  <input type="password" class="form-control" id="inputPassword4" placeholder="Mot de Passe *" name="mdpRegister">
-                </div>
-              </div>
-              <!--Adresse-->
-              <div class="form-group">
-                <input type="text" class="form-control" id="inputAddress" placeholder="Adresse *" name="adresseRegister">
-              </div>
-              <!--Ville & Pays-->
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <input type="text" class="form-control" id="inputCity4" placeholder="Ville *" name="villeRegister">
-                </div>
-                <div class="form-group col-md-6">
-                  <input type="text" class="form-control" id="inputCountry4" placeholder="Pays *" name="paysRegister">
-                </div>
-              </div>
-              <!--ZIP & Numero-->
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <input type="text" class="form-control" id="inputZip" placeholder="Code Postal *" name="postalRegister">
-                </div>
-                <div class="form-group col-md-8">
-                  <input type="text" class="form-control" id="inputCity" placeholder="Numero de telephone *" name="telRegister">
-                </div> 
-              </div>
-              <!--Carte vitale-->
-              <div class="form-group">
-                <input type="text" class="form-control" id="inputAddress" placeholder="Numéro Carte Vitale *" name="vitaleRegister">
-              </div>
-              <!--Check pour mot de passe -->
-              <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
-                    Mot de passe visible <br><br>
-                  </label>
-              </div>
-
-              <div class="form-group">
-                <input type="submit" class="btnSubmit" name="Créer un compte" />
-              </div>
-
-            </form>
-          </form>
-      </div>
-  </div>
+        </div>
+   </div>
 </div>
 
 
-
-    <footer class="text-center text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted">
       <!-- Section: Social media -->
       <section
         class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -259,11 +185,7 @@
         © 2021 Copyright:
         <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
       </div>
-      <!-- Copyright -->
+      
   </footer>   
 </body>
-
-
-
-
 </html>
