@@ -1,11 +1,3 @@
-<?php
-//SCENARIO OU L'USER N'EST PAS CONNECTE
-session_start();
-if (!isset($_SESSION['user'])) {
-    header('Location:client.php');
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -51,26 +43,26 @@ if (!isset($_SESSION['user'])) {
         </form>
         </div>
     </nav>
-    <br>
     <div class="container">
         <br><br>
-        <h1>Cardiologie :</h1>
+        <h1>Dermatologie :</h1>
         <br><br>
         <?php
         $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
-        $sql = "SELECT * FROM medecin WHERE typeMedecin = 'cardiologue'";
+        $sql = "SELECT * FROM medecin WHERE typeMedecin = 'dermatologue'";
         $result = $connect->query($sql);
         while (($row = $result->fetch_assoc())) {
+            //if($row["typeMedecin"] == "generaliste"){
         ?>
             <div class="card mb-8">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <br><br><br><br>
-                        <img src="images/medecin1.jpg" class="img-fluid rounded-start" alt="...">
+                        <img src="profile_img/<?php echo $row['photoMedecin'] ?>" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Medecin généraliste</h5>
+                            <h5 class="card-title">Medecin dermatologue</h5>
                             <h5 class="card-title"><?php echo $row["prenomMedecin"] . " " . $row["nomMedecin"] ?></h5>
                             <table>
                                 <tr>
@@ -158,7 +150,9 @@ if (!isset($_SESSION['user'])) {
                                 </table>
                             </div>
                             <br>
-                            <a href="provisoireStrbd.php" class="btn btn-primary">Plus d'informations</a>
+                            <form method="POST">
+                                <a type="button" class="btn btn-primary" href="generaliste.php?id=<?php echo $row["idMedecin"] ?>">Plus d'informations</a>
+                            </form>
                         </div>
                     </div>
                 </div>

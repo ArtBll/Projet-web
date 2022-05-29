@@ -1,10 +1,9 @@
 <?php
 //SCENARIO OU L'USER N'EST PAS CONNECTE
- session_start();
- if(!isset($_SESSION['user'])){
-   header('Location:client.php');
- }
- function payer(){header("Location:emailpaiment.php");}
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location:client.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +19,7 @@
     <?php
     function rdv($j, $h)
     {
-        $id = $_GET['id'];
+        $id = 8;
         $ok = 0;
         $chaine1 = "morch po";
         $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
@@ -66,11 +65,10 @@
             echo '<button type="button" class="btn btn-danger" disabled>' . $chaine1 . '-' . $chaine2 . '</button>';
         } else { ?>
             <form method="post">
-                <input href="labo.php" type="submit" class="btn btn-primary" name="<?php echo "$j$h" ?>" value="<?php echo "$chaine1-$chaine2" ?>"/>
+                <input type="submit" class="btn btn-primary" name="<?php echo "$j$h" ?>" value="<?php echo "$chaine1-$chaine2" ?>" />
             </form>
     <?php
-            if (isset($_POST["$j"."$h"])) {
-
+            if (isset($_POST["$j" . "$h"])) {
                 addRdv($j, $h, $id);
                 echo("<script>location.href = 'paiement.php'</script>");
             }
@@ -80,13 +78,13 @@
     function addRdv($day, $hour, $id)
     {
         //$idC  = isset($_POST["idC"])? $_POST["idC"] : "";
-        $idC = rand(1,99999999);
+        $idC = rand(1, 99999999);
         $idClient = $_SESSION["id"];
-        $_SESSION["idConsultation"] = $idC;
         $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
         $sql = "INSERT INTO consultation(idConsultation, idCli, idMed, heureConsult, jourConsult, dateConsult) VALUES($idC, $idClient, $id, '$hour', '$day', '2022-05-15')";
         if ($connect->query($sql) == TRUE) {
             echo "";
+            //header('Location:emailPaiment.php');
         } else {
             echo "";
         }
@@ -97,9 +95,10 @@
     ?>
 
 </head>
+<br><br><br>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light nav">
+    <nav class="navbar navbar-expand-lg navbar-light nav">
         <a class="navbar-brand" href="index.php">
             <img src="images/logo.png" width="60" height="60" class="" alt="">&nbsp;&nbsp;Omnès Santé
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,16 +125,17 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="POST" action="recherche.php">
                     <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">&nbsp;&nbsp;
-                    <input type="submit" class="btn btn-primary mr-2 my-sm-0" name="envoyer" value='Rechercher'></a>
-                    <a type="button" class="btn btn-danger mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
-                </form>
-            </div>
+                    <input type="submit" class="btn btn-primary mr-2 my-sm-0" name="envoyer" value='Rechercher'>
+        </a>
+        <a type="button" class="btn btn-danger mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
+        </form>
+        </div>
     </nav>
     <br><br>
 
     <?php
 
-    $idMed = $_GET['id'];
+    $idMed = 8;
 
     $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
     $sql = "SELECT * FROM medecin WHERE idMedecin = $idMed";
@@ -155,10 +155,10 @@
         <div class="card mb-8">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="profile_img/<?php echo $photo ?>" class="img-fluid rounded-start" alt="...">
+                    <img src="<?php echo $photo ?>" class="img-fluid rounded-start" alt="...">
                     <br><br>
                     <div>
-                        <h4 class="card-title">&nbsp;Dr.<?php echo $prenom . " " . $nom ?></h4>
+                        <h4 class="card-title"><?php echo $prenom . " " . $nom ?></h4>
                         <table>
                             <tr>
                                 <td>
@@ -189,23 +189,15 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h4 class="card-title">Formation et Expériences :</h4>
+                        <h4 class="card-title">Dépistage Covid-19 :</h4>
                         <br>
-                        <h5>Formation :</h5>
-                        <ul>
-                            <li><b>1980-1988 : Docteur en médecine :</b> Université Sorbonne Paris</li>
-                        </ul>
-                        <h5>Expérience :</h5>
-                        <ul>
-                            <li><b>1990-1994 : Résident en médecine interne :</b> Clinique Mayo</li>
-                            <li><b>1994-présent : Médecin Hospitalier :</b> Hospital européen George Pompidou</li>
-                        </ul>
-                        <br>
+                        <p>Trouvez rapidement un spécialiste en dépistage covid-19 test pcr près de chez vous ou un professionnel de santé pratiquant des actes de dépistage covid-19
+                            Lors de la prise de rendez-vous, des informations d’identification (nom, prénom…) peuvent être demandées pour pré-compléter le dossier administratif du patient et limiter son temps de présence dans le laboratoire et les risques de contamination associés</p>
                         Contacter en ligne : &nbsp;
                         <button type="button" class="btn btn-primary">Chatbox &nbsp;<i class="bi bi-chat"></i></button>
                         <button type="button" class="btn btn-primary">Voicecall &nbsp;<i class="bi bi-telephone"></i></button>
-                        <button type="button" class="btn btn-primary">Videocall &nbsp;<i class="bi bi-camera-video"></i></button><br>
-                        <br>Ou trouvez le rendez-vous qui vous correspond : <br>
+                        <button type="button" class="btn btn-primary">Videocall &nbsp;<i class="bi bi-camera-video"></i></button><br><br>
+                        Trouvez le rendez-vous qui vous correspond : <br>
                         <div class="container-fluid">
                             <div class="timetable-img text-center">
                                 <img src="img/content/timetable.png" alt="">

@@ -4,7 +4,7 @@
     {
       $id=$_GET['deleteid'];
 
-      $sql="DELETE FROM consult WHERE idConsult=$id";
+      $sql="DELETE FROM consultation WHERE idConsultation=$id";
       $result=mysqli_query($con,$sql);
       if($result)
       {

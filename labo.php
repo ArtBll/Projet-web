@@ -1,9 +1,9 @@
 <?php
 //SCENARIO OU L'USER N'EST PAS CONNECTE
- session_start();
- if(!isset($_SESSION['user'])){
-   header('Location:client.php');
- }
+session_start();
+if (!isset($_SESSION['user'])) {
+  header('Location:client.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,38 +19,37 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light nav">
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="index.php">
       <img src="images/logo.png" width="60" height="60" class="" alt="">&nbsp;&nbsp;Omnès Santé
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link d-inline-block align-top" href="index.html">
+            <a class="nav-link d-inline-block align-top" href="index.php">
               <font size="+1">Acceuil</font>
             </a>
           </li>
           <li class="nav-itema active">
-            <a class="nav-link" href="parcourir.html">
+            <a class="nav-link" href="parcourir.php">
               <font size="+1">Tout Parcourir</font>
             </a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href=".php">
+            <a class="nav-link" href="profilClient.php">
               <font size="+1">Rendez-vous</font>
             </a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-          <a type="button" class="btn btn-link mr-2 my-sm-0" href="recherche.php"><i class="bi bi-search"></i></a>
-        </form>
-        <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;Mon
-          compte</a>
-      </div>
+        <form class="form-inline my-2 my-lg-0" method="POST" action="recherche.php">
+          <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">&nbsp;&nbsp;
+          <input type="submit" class="btn btn-primary mr-2 my-sm-0" name="envoyer" value='Rechercher'>
+    </a>
+    <a type="button" class="btn btn-danger mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
+    </form>
+    </div>
   </nav>
   <div class="container">
     <br><br>
@@ -112,8 +111,9 @@
               un professionnel de santé pratiquant des actes de dépistage covid-19
               <br>Lors de la prise de rendez-vous, des informations d’identification (nom, prénom…) peuvent être
               demandées pour pré-compléter le dossier administratif du patient et limiter son temps de présence dans le
-              laboratoire et les risques de contamination associés.</p>
-            <a href="rdvlabo.php" class="btn btn-primary">Trouver mon rendez-vous</a>
+              laboratoire et les risques de contamination associés.
+            </p>
+            <a href="depistage.php" class="btn btn-primary">Trouver mon rendez-vous</a>
           </div>
         </div>
       </div>
@@ -128,9 +128,9 @@
           <div class="card-body">
             <h5 class="card-title">Biologie de la femme enceinte</h5>
             <p class="card-text">Examens et dépistage permettant de s’assurer du bon déroulement et
-              de la bonne tolérance de la grossesse ainsiq que de vérifier l’absence d’infections en cours de grossesse.
+              de la bonne tolérance de la grossesse ainsi que de vérifier l’absence d’infections en cours de grossesse.
             </p>
-            <a href=".html" class="btn btn-primary">Trouver mon rendez-vous</a>
+            <a href="enceinte.php" class="btn btn-primary">Trouver mon rendez-vous</a>
           </div>
         </div>
       </div>
@@ -150,8 +150,9 @@
               Mangez et buvez un peu dans les plus brefs délais après la prise de sang afin de recouvrer des forces et
               de limiter les risques de malaise.
               <br>Une vérification de l’ordonnance et de l’identité du patient est effectuée avant d’effectuer la prise
-              de sang.</p>
-            <a href=".html" class="btn btn-primary">Trouver mon rendez-vous</a>
+              de sang.
+            </p>
+            <a href="analyse.php" class="btn btn-primary">Trouver mon rendez-vous</a>
           </div>
         </div>
       </div>
@@ -170,7 +171,7 @@
               sans boutons pressions ni fermeture métallique.
               Si vous êtes enceinte ou pensez l’être, ou si vous allaitez, signalez-le aussi à votre interlocuteur. En
               effet, le scanner et/ou l'IRM ne sont pas indiqué en cas de grossesse.</p>
-            <a href=".html" class="btn btn-primary">Trouver mon rendez-vous</a>
+            <a href="imagerie.php" class="btn btn-primary">Trouver mon rendez-vous</a>
           </div>
         </div>
       </div>

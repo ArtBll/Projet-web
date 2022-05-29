@@ -1,6 +1,6 @@
 
 .nav{
-    background-color: rgb(64, 201, 255);
+    background-color: rgb(0, 201, 255);
 }
 
 .cardtrans:hover {
@@ -28,3 +28,40 @@
     font-weight: bold;
 }
 
+.slide{
+    float : left;
+}
+.slides{
+    width:calc(500px *3);
+    animation: glisse 10s infinite;
+}
+.slider{
+    width:500px;
+    overflow: hidden;
+    margin-left : 300px;
+}
+
+@keyframes glisse{
+    0%{
+        transform : translateX(0);
+    }
+    10%{
+        transform : translateX(0);
+    }
+
+    33%{
+        transform : translateX(-500px);
+    }
+    43%{
+        transform : translateX(-500px);
+    }
+    66%{
+        transform : translateX(-1000px);
+    }
+    76%{
+        transform : translateX(-1000px);
+    }
+    100%{
+        transform : translateX(0);
+    }
+}

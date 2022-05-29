@@ -19,7 +19,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light nav">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
             <img src="images/logo.png" width="60" height="60" class="" alt="">&nbsp;&nbsp;Omnès Santé
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href=".php">
+                        <a class="nav-link" href="profilClient.php">
                             <font size="+1">Rendez-vous</font>
                         </a>
                     </li>

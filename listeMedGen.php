@@ -1,9 +1,9 @@
 <?php
 //SCENARIO OU L'USER N'EST PAS CONNECTE
- session_start();
- if(!isset($_SESSION['user'])){
-   header('Location:client.php');
- }
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location:client.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light nav">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
             <img src="images/logo.png" width="60" height="60" class="" alt="">&nbsp;&nbsp;Omnès Santé
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -28,27 +28,28 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link d-inline-block align-top" href="index.html">
+                        <a class="nav-link d-inline-block align-top" href="index.php">
                             <font size="+1">Acceuil</font>
                         </a>
                     </li>
                     <li class="nav-itema active">
-                        <a class="nav-link" href="parcourir.html">
+                        <a class="nav-link" href="parcourir.php">
                             <font size="+1">Tout Parcourir</font>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href=".php">
+                        <a class="nav-link" href="profilClient.php">
                             <font size="+1">Rendez-vous</font>
                         </a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <a type="button" class="btn btn-link mr-2 my-sm-0" href="recherche.php"><i class="bi bi-search"></i></a>
-                </form>
-                <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;Mon compte</a>
-            </div>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="recherche.php">
+                    <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">&nbsp;&nbsp;
+                    <input type="submit" class="btn btn-primary mr-2 my-sm-0" name="envoyer" value='Rechercher'>
+        </a>
+        <a type="button" class="btn btn-danger mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
+        </form>
+        </div>
     </nav>
     <div class="container">
         <br><br>

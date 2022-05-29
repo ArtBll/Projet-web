@@ -1,9 +1,9 @@
 <?php
 //SCENARIO OU L'USER N'EST PAS CONNECTE
- session_start();
- if(!isset($_SESSION['user'])){
-   header('Location:client.php');
- }
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location:client.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light nav">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
             <img src="images/logo.png" width="60" height="60" class="" alt="">&nbsp;&nbsp;Omnès Santé
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link d-inline-block align-top" href="index.html">
+                        <a class="nav-link d-inline-block align-top" href="index.php">
                             <font size="+1">Acceuil</font>
                         </a>
                     </li>
@@ -39,27 +39,18 @@
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href=".php">
+                        <a class="nav-link" href="profilClient.php">
                             <font size="+1">Rendez-vous</font>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="provisoire.php">
-                            <font size="+1">provisoire</font>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">
-                            <font size="+1">index php</font>
                         </a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="POST" action="recherche.php">
-                    <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">
-                    <input type="submit" class="btn btn-primary mr-2 my-sm-0" name="envoyer" value='Rechercher'><i class="bi bi-search"></i></a>
-                    <a type="button" class="btn btn-danger mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
-                </form>
-            </div>
+                    <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">&nbsp;&nbsp;
+                    <input type="submit" class="btn btn-primary mr-2 my-sm-0" name="envoyer" value='Rechercher'>
+        </a>
+        <a type="button" class="btn btn-danger mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
+        </form>
+        </div>
     </nav>
     <br>
     <div class="container">
@@ -76,7 +67,15 @@
         <h4>Ouverture de notre nouveau laboratoire d'analyse médicale</h4>
         <p class="text-justify">Après des mois rénovation, notre laboratoire d'analyse médical <b>ré-ouvre ses portes cette semaine</b>. Dans ce nouveau laboratoire nous avons pu améliorer la prise en charge des patients et avons mis en place de nouvelles machines pour pouvoir à répondre à toutes vos demandes</p>
         <img src="images/nouv_labo.jpg" class="img-fluid">
-        
+        <p class="text-justify">Nos services sont riches et variés. Ainsi, trouvez ci-dessous différentes photos de docteurs travaillant au laboratoire</p>
+        <div class="slider">
+            <div class="slides">
+                <div class="slide"><img src="images/pic(1).jpg" alt=""></div>
+                <div class="slide"><img src="images/pic(2).jpg" alt=""></div>
+                <div class="slide"><img src="images/pic(3).jpg" alt=""></div>
+            </div>
+        </div>
+
     </div>
 </body>
 
