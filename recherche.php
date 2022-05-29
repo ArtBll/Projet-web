@@ -34,24 +34,35 @@
                             <font size="+1">Rendez-vous</font>
                         </a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="provisoire.php">
+                            <font size="+1">provisoire</font>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">
+                            <font size="+1">index php</font>
+                        </a>
+                    </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <a type="button" class="btn btn-link mr-2 my-sm-0" href="recherche.php"><i class="bi bi-search"></i></a>
+                <form class="form-inline my-2 my-lg-0" method="POST" action="recherche.php">
+                    <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">
+                    <input type="submit" class="btn btn-link mr-2 my-sm-0" id="envoyer"><i class="bi bi-search"></i>
+                    <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;Mon compte</a>
                 </form>
-                <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;Mon compte</a>
             </div>
     </nav>
     <br>
     <div class="container">
-        <br><br>
-        <h1>Cardiologie :</h1>
-        <br><br>
+        <h1>Résultat de la recherche :</h1>
         <?php
+        $recherche = htmlspecialchars($_POST['recherche']);
+        //echo "ooooooooooooooooooooooooooooooooooooooooooooooooooooooo<br>".$recherche."UUUUUUUUUUUUUUUUUUUUU";
         $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
-        $sql = "SELECT * FROM medecin WHERE typeMedecin = 'cardiologue'";
+        $sql = "SELECT * FROM medecin WHERE typeMedecin = '$recherche'";
         $result = $connect->query($sql);
         while (($row = $result->fetch_assoc())) {
+            //if($row["typeMedecin"] == "generaliste"){
         ?>
             <div class="card mb-8">
                 <div class="row g-0">
@@ -61,7 +72,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Medecin généraliste</h5>
+                            <h5 class="card-title">Medecin <?php echo $row["typeMedecin"] ?></h5>
                             <h5 class="card-title"><?php echo $row["prenomMedecin"] . " " . $row["nomMedecin"] ?></h5>
                             <table>
                                 <tr>
@@ -155,6 +166,18 @@
                 </div>
             </div><br><br>
         <?php }
+
+        $sql = "SELECT * FROM medecin WHERE nomMedecin = '$recherche'";
+        $result = $connect->query($sql);
+        while (($row = $result->fetch_assoc())) {
+            echo $row["emailMedecin"];
+        }
+
+        $sql = "SELECT * FROM medecin WHERE prenomMedecin = '$recherche'";
+        $result = $connect->query($sql);
+        while (($row = $result->fetch_assoc())) {
+            echo $row["emailMedecin"];
+        }
         ?>
     </div>
 </body>

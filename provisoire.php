@@ -80,10 +80,11 @@
 
     function addRdv($day, $hour, $id)
     {
-        $idC  = isset($_POST["idC"])? $_POST["idC"] : "";
+        //$idC  = isset($_POST["idC"])? $_POST["idC"] : "";
+        $idC = rand(1,99999);
         echo "IIIIIIIIII";
         $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
-        $sql = "INSERT INTO consultation(idConsult, idCli, idMed, heureConsult, jourConsult, dateConsult) VALUES($idC, 3, $id, '$hour', '$day', '2022-05-15')";
+        $sql = "INSERT INTO consultation(idConsultion, idCli, idMed, heureConsult, jourConsult, dateConsult) VALUES($idC, 3, $id, '$hour', '$day', '2022-05-15')";
         if ($connect->query($sql) == TRUE) {
             echo "Données ajoutées <br>";
         } else {
