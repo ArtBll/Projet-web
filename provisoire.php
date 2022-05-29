@@ -15,42 +15,15 @@
             document.write(result);
         }
     </script>
-    <?php
-    //$prenom=$_POST["prenomAdmin"];
-    //Variables
-    $heure = isset($_POST['heureConsult']) ? $_POST['heureConsult'] : NULL;
-    $jour = isset($_POST['jour']) ? $_POST['jour'] : NULL;
-    $ok = 0;
-
-
-
-    //connection
-    $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
-    //$db_found = mysqli_select_db($db_handle, $db);
-
-    if ($connect) {
-        echo "connected";
-    } else {
-        echo "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII";
-    }
-
-    $sql = "SELECT heureConsult, jour FROM consultation WHERE idMed=8376591";
-    $result = $connect->query($sql);
-    while ($row = $result->fetch_assoc()) {
-        if ($row["jour"] == "Lundi" && $row["heureConsult"] == "09:00:00") {
-            echo "TROUV2";
-        } else {
-            //echo "PAS BON";;
-        }
-    }
-    ?>
 
     <?php
     function rdv($j, $h)
     {
+        $id = $_GET['id'];
         $ok = 0;
+        $chaine1 = "morch po";
         $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
-        $sql = "SELECT heureConsult, jour FROM consultation WHERE idMed=8376591";
+        $sql = "SELECT heureConsult, jourConsult FROM consultation WHERE idMed= $id";
         $result = $connect->query($sql);
         if ($h == "09:00:00") {
             $chaine1 = "09:00";
@@ -80,8 +53,9 @@
             $chaine1 = "16:00";
             $chaine2 = "17:00";
         }
-        while (($row = $result->fetch_assoc()) && $ok != 1) {
-            if (($row["heureConsult"] == "$h") && ($row["jour"] == "$j")) {
+
+        while (($row = $result->fetch_assoc()) && ($ok != 1)) {
+            if (($row["heureConsult"] == "$h") && ($row["jourConsult"] == "$j")) {
                 $ok = 1;
             } else {
                 $ok = 0;
@@ -89,35 +63,33 @@
         }
         if ($ok == 1) {
             echo '<button type="button" class="btn btn-danger" disabled>' . $chaine1 . '-' . $chaine2 . '</button>';
-        } /*else {
-            //echo '<button type="button" class="btn btn-primary" id="'.$chaine1.'-'.$j.'" onclick="confirm()">'.$chaine1.'-'.$chaine2.'</button>';
-            echo '<form method="POST"><input name="envoyer" type="submit"></form>';
-            if(isset($_POST['envoyer'])){
-                addRdv($j, $h);
-            }
-            //addRdv($j, $h);
-        }*/ else { ?>
-            <form method="POST"><input name="envoyer" type="submit"></form>
+        } else { ?>
+            <form method="post">
+                <input type="submit" name="<?php echo "$j$h" ?>" value="Button1" />
+                <?php echo "$j$h" ?>
+            </form>
     <?php
-            if (isset($_POST['envoyer'])) {
-                addRdv($j, $h);
+            if (isset($_POST["$j"."$h"])) {
+                addRdv($j, $h, $id);
             }
-
-            //addRdv($j, $h);
+            else{
+                echo "NONNNNNNNNN";
+            }
         }
     }
 
-    function addRdv($day, $hour)
+    function addRdv($day, $hour, $id)
     {
-        $idM = 0;
+        $idC  = isset($_POST["idC"])? $_POST["idC"] : "";
         echo "IIIIIIIIII";
         $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
-        $sql = "INSERT INTO consultation(idConsultation, idCli, idMed, heureConsult, dateConsult, jour) VALUES(77777, 6529865, 8376591, '$hour', '2022-05-15', '$day')";
+        $sql = "INSERT INTO consultation(idConsult, idCli, idMed, heureConsult, jourConsult, dateConsult) VALUES($idC, 3, $id, '$hour', '$day', '2022-05-15')";
         if ($connect->query($sql) == TRUE) {
             echo "Données ajoutées <br>";
         } else {
             echo "Error: " . $sql . "<br>" . $connect->error;
         }
+
         //$sql = "INSERT INTO consultation(idConsultation, idCli, idMed, heureConsult, dateConsult, jour) VALUES('$idC', '6529865', '$idM','$heure', '$date', '$jour')";
     }
 
@@ -221,15 +193,32 @@
     }
     ?>
 
+    <?php
+
+    $idMed = $_GET['id'];
+
+    $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
+    $sql = "SELECT * FROM medecin WHERE idMedecin = $idMed";
+    $result = $connect->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $prenom = $row["prenomMedecin"];
+        $nom = $row["nomMedecin"];
+        $email = $row["prenomMedecin"];
+        $tel = $row["telMedecin"];
+        $photo = $row["photoMedecin"];
+        $cv = $row["cvMedecin"];
+        $type = $row["typeMedecin"];
+    }
+    ?>
 
     <div class="container-fluid">
         <div class="card mb-8">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="images/medecin1.jpg" class="img-fluid rounded-start" alt="...">
+                    <img src="profile_img/<?php echo $photo ?>" class="img-fluid rounded-start" alt="...">
                     <br><br>
                     <div>
-                        <h4 class="card-title">&nbsp;Jean Némar</h4>
+                        <h4 class="card-title">&nbsp;<?php echo $prenom . " " . $nom ?></h4>
                         <table>
                             <tr>
                                 <td>

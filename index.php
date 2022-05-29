@@ -49,13 +49,13 @@
                 <form class="form-inline my-2 my-lg-0" method="POST" action="recherche.php">
                     <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">
                     <input type="submit" class="btn btn-link mr-2 my-sm-0" name="envoyer"><i class="bi bi-search"></i></a>
-                    <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;Mon compte</a>
+                    <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
                 </form>
             </div>
     </nav>
     <br>
     <div class="container">
-        <h1>Bienvenu sur Omnes Santé</h1>
+        <h1>Bienvenu sur Omnes Santé !</h1>
         <br>
         <p class="text-justify"><b>Besoin d'un rendez-vous avec un généraliste ? un spécialiste ? Besoin de faire un examen ? Omnès Santé est votre meilleur allié pour trouver et réserver un rendez vous facilement et rapidement.</b></p>
         <br>

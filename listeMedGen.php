@@ -58,7 +58,7 @@
                 <div class="row g-0">
                     <div class="col-md-4">
                         <br><br><br><br>
-                        <img src="images/medecin1.jpg" class="img-fluid rounded-start" alt="...">
+                        <img src="profile_img/<?php echo $row['photoMedecin'] ?>" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -150,7 +150,9 @@
                                 </table>
                             </div>
                             <br>
-                            <a href="provisoireStrbd.php" class="btn btn-primary">Plus d'informations</a>
+                            <form method="POST">
+                                <a type="button" class="btn btn-primary" href="provisoire.php?id=<?php echo $row["idMedecin"] ?>">Plus d'informations</a>
+                            </form>
                         </div>
                     </div>
                 </div>

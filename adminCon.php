@@ -3,12 +3,14 @@
   session_start();
   require_once 'config.php';
 //VERIFIER QUE LES VALEURS SONT BIEN PRISES
-  if(isset($_POST["mailLogin"]) && isset($_POST["mdpLogin"])){
+  if(isset($_POST["nomAdmin"]) && isset($_POST["prenomAdmin"]) && isset($_POST["emailAdmin"]))
+  {
 //LES ATTRIBUTS PRENNENT LES VALEURS INSCRITES DANS LA PARTIE LOGIN
-    $email = htmlspecialchars($_POST["mailLogin"]);
-    $mdp = htmlspecialchars($_POST["mdpLogin"]);
+    $nom = htmlspecialchars($_POST["nomAdmin"]);
+    $prenom = htmlspecialchars($_POST["prenomAdmin"]);
+    $email = htmlspecialchars($_POST["emailAdmin"]);
 //PREPARATION DE LA REQUETTE SQL
-    $check = $bdd->prepare('SELECT idClient, emailClient, passwordClient, prenomClient  FROM client WHERE emailClient = ?');
+    $check = $bdd->prepare('SELECT userAdmin, nomAdmin, prenomAdmin, emailAdmin  FROM admin WHERE emailAdmin = ?');
     $check->execute(array($email));
     $data = $check->fetch();
     $row = $check->rowCount();
@@ -20,17 +22,16 @@
       if(filter_var($email, FILTER_VALIDATE_EMAIL))
       {
 //SI LE PASSWORD CORRESPOND BIEN AU PASSWORD LIE A L'EMAIL RENSEIGNE
-        if($data['passwordClient'] === $mdp)
+        if($data['nomAdmin'] === $nom)
         {
 //CREATION DE LA SESSION AVEC LE PRENOM DU CLIENT EN TANT QUE USER
-          $_SESSION["user"] = $data["prenomClient"];
-          $_SESSION["id"] = $data["idClient"];
-          header("Location:index.php");
+          $_SESSION["user"] = $data["userAdmin"];
+          header("Location:profilAdmin.php");
 //LES HEADERS CORRESPONDENT AUX ERREUR POSSIBLES, SE REFERRER A LA PAGE HTML DE CONNEXION
 
 //A MODIFIER SI L'ON CHANGE LE NOM DU FICHIER DE CONNEXION (SUR)
-        }else header('Location:client.php?login_err=password');
-      }else header('Location:client.php?login_err=email');
-    }else header('Location:client.php?login_err=already');
-  }else header('Location:client.php');
+        }else header('Location:admin.php?login_err=nomprenom');
+      }else header('Location:admin.php?login_err=email');
+    }else header('Location:admin.php?login_err=already');
+  }else header('Location:admin.php');
 ?>

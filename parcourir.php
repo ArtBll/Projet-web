@@ -64,7 +64,7 @@
             <h5 class="card-title">Médecin spécialiste</h5>
             <p class="card-text">Touvez le rendez vous qui vous convient le mieux avec un médecin spécialiste
               (Addictologie, cardiologie, dermatologie, etc).</p>
-            <a href="spe.html" class="btn btn-primary">Trouvez ma spécialité</a>
+            <a href="spe.php" class="btn btn-primary">Trouvez ma spécialité</a>
           </div>
         </div>
       </div>
