@@ -42,7 +42,7 @@
                 <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;Mon compte</a>
             </div>
     </nav>
-    <br>
+    <br><br><br><br>
     <div class="container">
         <br><br>
         <h1>Medecine Générale :</h1>
@@ -151,7 +151,7 @@
                             </div>
                             <br>
                             <form method="POST">
-                                <a type="button" class="btn btn-primary" href="provisoire.php?id=<?php echo $row["idMedecin"] ?>">Plus d'informations</a>
+                                <a type="button" class="btn btn-primary" href="generaliste.php?id=<?php echo $row["idMedecin"] ?>">Plus d'informations</a>
                             </form>
                         </div>
                     </div>

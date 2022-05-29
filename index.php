@@ -48,8 +48,8 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="POST" action="recherche.php">
                     <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">
-                    <input type="submit" class="btn btn-link mr-2 my-sm-0" name="envoyer"><i class="bi bi-search"></i></a>
-                    <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
+                    <input type="submit" class="btn btn-primary mr-2 my-sm-0" name="envoyer" value='&nbsp;&nbsp;Rechercher'><i class="bi bi-search"></i></a>
+                    <a type="button" class="btn btn-danger mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
                 </form>
             </div>
     </nav>
