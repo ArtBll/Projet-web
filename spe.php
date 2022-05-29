@@ -43,7 +43,7 @@
                     <div class="card-body">
                       <h5 class="card-title">Addictologie</h5>
                       <p class="card-text">Touvez le rendez vous qui vous convient le mieux avec un addictologue.</p>
-                      <a href="general.html" class="btn btn-primary">Touver mon rendez-vous</a>
+                      <a href="listeAddictologue.php" class="btn btn-primary">Touver mon rendez-vous</a>
                     </div>
                 </div>
             </div>
@@ -93,16 +93,6 @@
                     <div class="card-body">
                       <h5 class="card-title">Gynécologie</h5>
                       <p class="card-text">Touvez le rendez vous qui vous convient le mieux avec un gynécologue.</p>
-                      <a href="#" class="btn btn-primary">Trouver mon rendez-vous</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md d-flex justify-content-center">
-                <div class="card cardtrans" style="width: 18rem;">
-                    <img class="card-img-top" src="images/labo.jpg" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title">I.S.T</h5>
-                      <p class="card-text">Touvez le rendez vous qui vous convient le mieux avec un spécialiste des I.S.T</p>
                       <a href="#" class="btn btn-primary">Trouver mon rendez-vous</a>
                     </div>
                 </div>

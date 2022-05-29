@@ -48,7 +48,7 @@
         <br><br>
         <?php
         $connect = mysqli_connect('localhost', 'root', '', 'projetweb');
-        $sql = "SELECT * FROM medecin WHERE typeMedecin = 'generaliste'";
+        $sql = "SELECT * FROM medecin WHERE typeMedecin = 'addictologue'";
         $result = $connect->query($sql);
         while (($row = $result->fetch_assoc())) {
             //if($row["typeMedecin"] == "generaliste"){
