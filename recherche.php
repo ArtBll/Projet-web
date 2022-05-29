@@ -1,9 +1,9 @@
 <?php
 //SCENARIO OU L'USER N'EST PAS CONNECTE
- session_start();
- if(!isset($_SESSION['user'])){
-   header('Location:client.php');
- }
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location:client.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,12 +28,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link d-inline-block align-top" href="index.html">
+                        <a class="nav-link d-inline-block align-top" href="index.php">
                             <font size="+1">Acceuil</font>
                         </a>
                     </li>
                     <li class="nav-itema active">
-                        <a class="nav-link" href="parcourir.html">
+                        <a class="nav-link" href="parcourir.php">
                             <font size="+1">Tout Parcourir</font>
                         </a>
                     </li>
@@ -42,21 +42,11 @@
                             <font size="+1">Rendez-vous</font>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="provisoire.php">
-                            <font size="+1">provisoire</font>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.php">
-                            <font size="+1">index php</font>
-                        </a>
-                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0" method="POST" action="recherche.php">
-                    <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">
-                    <input type="submit" class="btn btn-link mr-2 my-sm-0" id="envoyer"><i class="bi bi-search"></i>
-                    <a type="button" class="btn btn-success mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;Mon compte</a>
+                    <input class="form-control" name="recherche" type="text" placeholder="Search" aria-label="Search">&nbsp;&nbsp;
+                    <input type="submit" class="btn btn-primary mr-2 my-sm-0" id="envoyer" value="Rechercher"></i>
+                    <a type="button" class="btn btn-danger mr-2 my-sm-0" href="client.php"><i class="bi bi-person"></i>&nbsp;&nbsp;Déconnexion</a>
                 </form>
             </div>
     </nav>
@@ -76,11 +66,11 @@
                 <div class="row g-0">
                     <div class="col-md-4">
                         <br><br><br><br>
-                        <img src="images/medecin1.jpg" class="img-fluid rounded-start" alt="...">
+                        <img src="images/<?php echo $row["photoMedecin"] ?>." class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Medecin <?php echo $row["typeMedecin"] ?></h5>
+                            <h5 class="card-title"><?php echo $row["typeMedecin"] ?></h5>
                             <h5 class="card-title"><?php echo $row["prenomMedecin"] . " " . $row["nomMedecin"] ?></h5>
                             <table>
                                 <tr>
@@ -178,14 +168,216 @@
         $sql = "SELECT * FROM medecin WHERE nomMedecin = '$recherche'";
         $result = $connect->query($sql);
         while (($row = $result->fetch_assoc())) {
-            echo $row["emailMedecin"];
-        }
+        ?>
+            <div class="card mb-8">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <br><br><br><br>
+                        <img src="images/<?php echo $row["photoMedecin"] ?>." class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row["typeMedecin"] ?></h5>
+                            <h5 class="card-title"><?php echo $row["prenomMedecin"] . " " . $row["nomMedecin"] ?></h5>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <font size="+1">Salle :</font>
+                                    </td>
+                                    <td>
+                                        <font size="+1">EM-204
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <font size="+1">Téléphone :</font>
+                                    </td>
+                                    <td>
+                                        <font size="+1"><?php echo $row["telMedecin"] ?></font>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <font size="+1">Email :</font>
+                                    </td>
+                                    <td>
+                                        <font size="+1"><?php echo $row["emailMedecin"] ?></font>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered text-center">
+                                    <thead>
+                                        <tr class="bg-light-gray">
+                                            <th class="text-uppercase">Lundi</th>
+                                            <th class="text-uppercase">Mardi</th>
+                                            <th class="text-uppercase">Mercredi</th>
+                                            <th class="text-uppercase">Jeudi</th>
+                                            <th class="text-uppercase">Vendredi</th>
+                                            <th class="text-uppercase">Samedi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" disabled>Dispo</button>
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Apres-midi</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Apres-midi</button>
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Apres-midi</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" disabled>Apres-midi</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Apres-midi</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" disabled>Apres-midi</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br>
+                            <a href="provisoireStrbd.php" class="btn btn-primary">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br>
+        <?php }
 
         $sql = "SELECT * FROM medecin WHERE prenomMedecin = '$recherche'";
         $result = $connect->query($sql);
         while (($row = $result->fetch_assoc())) {
-            echo $row["emailMedecin"];
-        }
+        ?>
+            <div class="card mb-8">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <br><br><br><br>
+                        <img src="images/<?php echo $row["photoMedecin"] ?>." class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $row["typeMedecin"] ?></h5>
+                            <h5 class="card-title"><?php echo $row["prenomMedecin"] . " " . $row["nomMedecin"] ?></h5>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <font size="+1">Salle :</font>
+                                    </td>
+                                    <td>
+                                        <font size="+1">EM-204
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <font size="+1">Téléphone :</font>
+                                    </td>
+                                    <td>
+                                        <font size="+1"><?php echo $row["telMedecin"] ?></font>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <font size="+1">Email :</font>
+                                    </td>
+                                    <td>
+                                        <font size="+1"><?php echo $row["emailMedecin"] ?></font>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered text-center">
+                                    <thead>
+                                        <tr class="bg-light-gray">
+                                            <th class="text-uppercase">Lundi</th>
+                                            <th class="text-uppercase">Mardi</th>
+                                            <th class="text-uppercase">Mercredi</th>
+                                            <th class="text-uppercase">Jeudi</th>
+                                            <th class="text-uppercase">Vendredi</th>
+                                            <th class="text-uppercase">Samedi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" disabled>Dispo</button>
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Dispo</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Apres-midi</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Apres-midi</button>
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Apres-midi</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" disabled>Apres-midi</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success" disabled>Apres-midi</button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" disabled>Apres-midi</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br>
+                            <a href="provisoireStrbd.php" class="btn btn-primary">Plus d'informations</a>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br>
+        <?php }
         ?>
     </div>
 </body>

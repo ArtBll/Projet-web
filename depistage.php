@@ -95,8 +95,6 @@ if (!isset($_SESSION['user'])) {
     ?>
 
 </head>
-<br><br><br>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light nav">
         <a class="navbar-brand" href="index.php">

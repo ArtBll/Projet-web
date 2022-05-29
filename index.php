@@ -54,7 +54,8 @@ if (!isset($_SESSION['user'])) {
     </nav>
     <br>
     <div class="container">
-        <h1>Bienvenu sur Omnes Santé !</h1>
+        <br>
+        <h1>Bienvenue sur Omnes Santé !</h1>
         <br>
         <p class="text-justify"><b>Besoin d'un rendez-vous avec un généraliste ? un spécialiste ? Besoin de faire un examen ? Omnès Santé est votre meilleur allié pour trouver et réserver un rendez vous facilement et rapidement.</b></p>
         <br>
@@ -67,7 +68,9 @@ if (!isset($_SESSION['user'])) {
         <h4>Ouverture de notre nouveau laboratoire d'analyse médicale</h4>
         <p class="text-justify">Après des mois rénovation, notre laboratoire d'analyse médical <b>ré-ouvre ses portes cette semaine</b>. Dans ce nouveau laboratoire nous avons pu améliorer la prise en charge des patients et avons mis en place de nouvelles machines pour pouvoir à répondre à toutes vos demandes</p>
         <img src="images/nouv_labo.jpg" class="img-fluid">
-        <p class="text-justify">Nos services sont riches et variés. Ainsi, trouvez ci-dessous différentes photos de docteurs travaillant au laboratoire</p>
+        <br><br><br><br><br>
+        <h5><center>Nos services sont riches et variés. Ainsi, trouvez ci-dessous différentes photos de docteurs travaillant au laboratoire</center></h5>
+        <br>
         <div class="slider">
             <div class="slides">
                 <div class="slide"><img src="images/pic(1).jpg" alt=""></div>
