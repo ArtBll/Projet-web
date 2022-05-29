@@ -1,3 +1,11 @@
+<?php
+//SCENARIO OU L'USER N'EST PAS CONNECTE
+ session_start();
+ if(!isset($_SESSION['user'])){
+   header('Location:client.php');
+ }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
